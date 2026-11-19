@@ -20,9 +20,9 @@ Both projects below were deployed to a real Azure subscription, checked against 
 
 ### [Azure Hub-and-Spoke Landing Zone](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone)
 
-A hub and two spokes in Terraform, deployed by a GitHub Actions pipeline that holds no secret. Plan, apply and destroy each stop at an approval gate, sign in to Azure with a short-lived OIDC token, and are public: [plan](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44445970210) · [apply](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44446223300) · [destroy](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44447025676).
+A hub and two spokes in Terraform, deployed by a GitHub Actions pipeline that holds no secret. Plan, apply and destroy each stop at an approval gate, sign in to Azure with a short-lived OIDC token, and are public: [plan](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44460878382) · [apply](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44461006767) · [destroy](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44461612790).
 
-[![The apply run: approved at the production gate, job green](https://raw.githubusercontent.com/mohamedhirey/azure-hub-spoke-landing-zone/main/docs/evidence/pipeline-apply-run.png)](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44446223300)
+[![The apply run: approved at the production gate, job green](https://raw.githubusercontent.com/mohamedhirey/azure-hub-spoke-landing-zone/main/docs/evidence/pipeline-apply-run.png)](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/actions/runs/44461006767)
 
 | Claim | Proof |
 |---|---|
@@ -33,7 +33,7 @@ A hub and two spokes in Terraform, deployed by a GitHub Actions pipeline that ho
 | The tests can fail | Break the rule, watch 2 of 4 fail, restore. [`01-unit-tests.txt`](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/blob/main/docs/evidence/01-unit-tests.txt) |
 | Nothing was left behind | 0 resources, roles, app registrations or secrets. [`07-teardown.txt`](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/blob/main/docs/evidence/07-teardown.txt) |
 
-Deploying it for real also found three things offline validation could not, including a change in the shape of GitHub's OIDC subject that would have had Entra ID reject the pipeline. [What it found](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/tree/main/docs/evidence#what-deploying-it-for-real-found).
+It has been through the pipeline twice. The first deployment found four things that local validation could not, including a change in the shape of GitHub's OIDC subject that would have had Entra ID reject the pipeline. The run recorded in the repository is the second, with those corrected. [What the first one found](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/tree/main/docs/evidence#what-the-first-deployment-found).
 
 ---
 
