@@ -18,7 +18,7 @@ A hub and two spoke networks, deployed by a GitHub Actions pipeline that holds n
 - **Dev cannot reach prod.** There is no peering between the spokes, confirmed from Azure.
 - **Deployed twice.** The first run found four problems that offline validation could not. [What it found](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/tree/main/docs/evidence#what-the-first-deployment-found).
 
-29 resources · no standing cost · [evidence](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/tree/main/docs/evidence)
+29 resources · no standing charge · [evidence](https://github.com/mohamedhirey/azure-hub-spoke-landing-zone/tree/main/docs/evidence)
 
 ---
 
@@ -26,12 +26,12 @@ A hub and two spoke networks, deployed by a GitHub Actions pipeline that holds n
 
 [![ci](https://github.com/mohamedhirey/azure-secure-web-app/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedhirey/azure-secure-web-app/actions/workflows/ci.yml)
 
-A Python web app on App Service whose Cosmos DB and Key Vault have no public network path and accept no keys.
+A Python web app on App Service whose Cosmos DB and Key Vault refuse data requests from the public network and accept no keys.
 
 - **No keys to the data.** The app reaches Cosmos DB and Key Vault as a managed identity, through private endpoints. Cosmos DB account keys are disabled.
-- **Private, and proven so.** The vault's own audit log shows the subscription owner refused from the internet, even after being granted the role.
-- **Least privilege.** The app's identity can read secrets in one vault, and read and write items in one database.
+- **Private data path, and proven so.** The vault's own audit log shows the subscription owner refused from the internet, even after being granted the role.
+- **Least privilege.** The app's identity holds two roles: read secrets in one vault, and read, write, query and delete items in one database.
 - **Tested alerting.** The HTTP 5xx alert was made to fire, and its fired and resolved times are recorded.
-- **A real defect, found and fixed.** The first `terraform destroy` failed. The cause, the fix and the proof are recorded. [What it found](https://github.com/mohamedhirey/azure-secure-web-app/tree/main/docs/evidence#what-deploying-it-for-real-found).
+- **A real defect, found and fixed.** The first `terraform destroy` failed. The cause and the fix are recorded. The fix was proven on the vault and its secret alone, and the full app has not been redeployed with it. [What it found](https://github.com/mohamedhirey/azure-secure-web-app/tree/main/docs/evidence#what-deploying-it-for-real-found).
 
 32 resources · torn down the same day · [evidence](https://github.com/mohamedhirey/azure-secure-web-app/tree/main/docs/evidence)
